@@ -200,7 +200,7 @@ export default function AIChat({ className = "" }) {
       </form>
 
       <div className="mt-2 flex min-h-[1.25rem] items-center justify-between px-1">
-        <p className="text-xs text-white/35">AI-powered — answers may not always be fully accurate.</p>
+        <p className="text-xs text-white/35">AI-powered — answers.</p>
         {hasMessages && (
           <button
             type="button"
