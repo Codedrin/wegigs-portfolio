@@ -21,7 +21,13 @@ if (fs.existsSync(distDir)) {
   app.get(/.*/, (_req, res) => res.sendFile(path.join(distDir, "index.html")))
 }
 
-const PORT = process.env.PORT || 3001
-app.listen(PORT, () => {
-  console.log(`API server listening on http://localhost:${PORT}`)
-})
+// On Vercel the app is wrapped as a serverless function (see api/index.js)
+// rather than run as a long-lived process, so skip binding a port there.
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 3001
+  app.listen(PORT, () => {
+    console.log(`API server listening on http://localhost:${PORT}`)
+  })
+}
+
+export default app
